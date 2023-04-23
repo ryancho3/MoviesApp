@@ -1,4 +1,9 @@
 package com.example.moviesapp
 
-class ListResponse {
-}
+import com.squareup.moshi.Json
+
+data class ListResponse (
+    @Json(name = "results")
+    val results : List<MovieListItem>
+    )
+
