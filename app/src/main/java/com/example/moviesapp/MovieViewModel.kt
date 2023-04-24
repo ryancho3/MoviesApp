@@ -20,14 +20,14 @@ class MovieViewModel: ViewModel() {
 
     init {
         getNowPlaying()
-        Log.i("MOVIE_API_INIT", _movies.value.toString())
+//        Log.i("MOVIE_API_INIT", _movies.value.toString())
     }
 
     fun getNowPlaying() {
         MovieApi.retrofitService.getNowPlaying().enqueue(object: Callback<ListResponse> {
             override fun onResponse(call: Call<ListResponse>, response: Response<ListResponse>) {
-                val results = response.body()!!.results.toList()
-                _movies.value = results.toList()
+                _movies.value = response.body()!!.results.toList()
+                Log.i("MOVIE_API", "SUCCESS: " + _movies.value.toString())
             }
             override fun onFailure(call: Call<ListResponse>, t: Throwable) {
                 Log.i("MOVIE_API", "ERROR: " + t.message + ", getNowPlaying")
