@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.moviesapp.databinding.FragmentMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +25,10 @@ class mainFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var viewModel: MovieViewModel
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,12 +37,27 @@ class mainFragment : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+
+        _binding = FragmentMainBinding.inflate(layoutInflater)
+        //val view = binding.root
+        //setContentView(view)
+
+
+        val recyclerView = binding.movieListRv
+        val adapter = viewModel.movies?.value?.let { MovieAdapter(it) }
+        recyclerView.adapter = adapter
+
+        viewModel.movies.observe(viewLifecycleOwner, Observer {
+            val adapter = MovieAdapter(it)
+            recyclerView.adapter = adapter
+        })
+        return binding.root
     }
 
     companion object {
