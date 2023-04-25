@@ -3,14 +3,12 @@ package com.example.moviesapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.moviesapp.databinding.MovieItemBinding
-import kotlin.text.Typography.section
 
 
 class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -19,8 +17,9 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
 
         val movieImage: ImageView = itemView.findViewById(R.id.movie_image)
         val movieTitle: TextView = itemView.findViewById(R.id.movie_title)
-        val movieGenre: TextView = itemView.findViewById(R.id.movie_genre)
         val movieAdult: TextView = itemView.findViewById(R.id.movie_adult)
+        val movieRating: RatingBar = itemView.findViewById(R.id.movie_rating)
+
 
         init {
             // Setup the click listener
@@ -41,7 +40,6 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val view = layoutInflater
             .inflate(R.layout.movie_item, parent, false)
 
-
         return MovieViewHolder(view)    }
 
     override fun getItemCount(): Int {
@@ -53,7 +51,9 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val movieImage = holder.movieImage
         val movieTitle = holder.movieTitle
         val movieAdult = holder.movieAdult
+        val movieRating = holder.movieRating
 
+        movieRating.rating = movie.voteAvg.toFloat()
         movieTitle.text = movie.title
         movieAdult.text = when (movie.isAdult) {
             true -> "Adult Film"
@@ -61,8 +61,6 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         }
 
         val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
-
-
 
         bindImage(movieImage, movieUri)
     }
