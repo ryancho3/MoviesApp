@@ -22,6 +22,17 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val movieGenre: TextView = itemView.findViewById(R.id.movie_genre)
         val movieAdult: TextView = itemView.findViewById(R.id.movie_adult)
 
+        init {
+            // Setup the click listener
+            itemView.setOnClickListener {
+                // Triggers click upwards to the adapter on click
+                val position = absoluteAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(itemView, position)
+                }
+            }
+        }
+
     }
 
 

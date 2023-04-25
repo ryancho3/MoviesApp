@@ -49,9 +49,7 @@ class mainFragment : Fragment() {
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             val adapter = MovieAdapter(it)
                 recyclerView.adapter = adapter
-            })
 
-        if (adapter != null) {
             adapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
                 override fun onItemClick(itemView: View?, position: Int) {
                     val movieID = viewModel.movies.value?.get(position)?.id
@@ -59,7 +57,17 @@ class mainFragment : Fragment() {
                     view?.findNavController()?.navigate(R.id.action_mainFragment_to_detailFragment, bundle)
                 }
             })
-        }
+
+            })
+
+
+        adapter?.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
+            override fun onItemClick(itemView: View?, position: Int) {
+                val movieID = viewModel.movies.value?.get(position)?.id
+                val bundle = bundleOf("id" to movieID)
+                view?.findNavController()?.navigate(R.id.action_mainFragment_to_detailFragment, bundle)
+            }
+        })
 
         return binding.root
     }
