@@ -11,7 +11,7 @@ import com.example.moviesapp.databinding.MovieItemBinding
 import kotlin.text.Typography.section
 
 
-class MovieAdapter(private val movies: MutableList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
