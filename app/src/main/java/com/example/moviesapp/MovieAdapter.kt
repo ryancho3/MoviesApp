@@ -3,14 +3,11 @@ package com.example.moviesapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.moviesapp.databinding.MovieItemBinding
-import kotlin.text.Typography.section
 
 
 class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -29,7 +26,6 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
             .inflate(R.layout.movie_item, parent, false)
-
 
         return MovieViewHolder(view)    }
 
@@ -50,8 +46,6 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         }
 
         val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
-
-
 
         bindImage(movieImage, movieUri)
     }
