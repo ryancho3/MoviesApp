@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.moviesapp.databinding.FragmentMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,10 +45,22 @@ class mainFragment : Fragment() {
         val adapter = viewModel.movies?.value?.let { MovieAdapter(it) }
         recyclerView.adapter = adapter
 
+
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             val adapter = MovieAdapter(it)
-            recyclerView.adapter = adapter
-        })
+                recyclerView.adapter = adapter
+            })
+
+        if (adapter != null) {
+            adapter.setOnItemClickListener(object : MovieAdapter.OnItemClickListener {
+                override fun onItemClick(itemView: View?, position: Int) {
+                    val movieID = viewModel.movies.value?.get(position)?.id
+                    val bundle = bundleOf("id" to movieID)
+                    view?.findNavController()?.navigate(R.id.action_mainFragment_to_detailFragment, bundle)
+                }
+            })
+        }
+
         return binding.root
     }
 

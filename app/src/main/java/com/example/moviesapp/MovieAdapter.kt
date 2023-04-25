@@ -63,5 +63,17 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         }
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(itemView: View?, position: Int)
+    }
+
+    // Define listener member variable
+    private lateinit var listener: OnItemClickListener
+
+    // Define the method that allows the parent activity or fragment to define the listener
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
 
 }
