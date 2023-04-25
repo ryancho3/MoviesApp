@@ -7,8 +7,8 @@ data class MovieListItem (
     val id: Int,
     @Json(name = "adult")
     val isAdult: Boolean,
-    @Json(name = "backdrop_path")
-    val backdropPoster: String,
+    @Json(name = "poster_path")
+    val posterPath: String,
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "title")

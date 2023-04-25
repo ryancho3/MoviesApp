@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.moviesapp.databinding.MovieItemBinding
 import kotlin.text.Typography.section
 
@@ -48,8 +50,19 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
             true -> "R-18"
             false -> "Not R-18"
         }
-        movieImage.setImageResource(0)
 
+        val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
+
+
+
+        bindImage(movieImage, movieUri)
+    }
+
+    fun bindImage(imgView: ImageView, imgUrl: String?) {
+        imgUrl?.let {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            imgView.load(imgUri)
+        }
     }
 
 
