@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/movie_image2"
+        android:id="@+id/movie_image"
         android:layout_width="173dp"
         android:layout_height="226dp"
         android:layout_marginTop="28dp"
@@ -24,11 +24,11 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/movie_image2"
+        app:layout_constraintStart_toEndOf="@id/movie_image"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/movie_title2"
+            android:id="@+id/movie_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -39,7 +39,7 @@
             />
 
         <TextView
-            android:id="@+id/movie_genre2"
+            android:id="@+id/movie_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -47,7 +47,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/movie_adult2"
+            android:id="@+id/movie_adult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -55,7 +55,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/movie_runtime2"
+            android:id="@+id/movie_runtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -64,7 +64,7 @@
 
 
         <TextView
-            android:id="@+id/movie_avg_rating2"
+            android:id="@+id/movie_avg_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -74,13 +74,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/movie_details2"
+        android:id="@+id/movie_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Details"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_image2" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_image" />
 
 
     <!--    <LinearLayout-->
