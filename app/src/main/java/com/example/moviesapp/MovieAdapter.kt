@@ -41,14 +41,12 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val movie = movies[position]
         val movieImage = holder.movieImage
         val movieTitle = holder.movieTitle
-        val movieGenre = holder.movieGenre
         val movieAdult = holder.movieAdult
 
         movieTitle.text = movie.title
-        movieGenre.text = "IMPLEMENT GENRE"
         movieAdult.text = when (movie.isAdult) {
-            true -> "R-18"
-            false -> "Not R-18"
+            true -> "Adult Film"
+            false -> "Not Adult Film"
         }
 
         val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
