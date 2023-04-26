@@ -5,82 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/movie_image"
-        android:layout_width="173dp"
-        android:layout_height="226dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="placeholder"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_card"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:gravity="top"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/movie_image"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/movie_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Title"
-            android:textSize="30sp"
-            android:textStyle="bold"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            />
+            <ImageView
+                android:id="@+id/movie_image"
+                android:layout_width="173dp"
+                android:layout_height="226dp"
+                android:contentDescription="placeholder"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/movie_genre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Genre"
-            android:textSize="20sp" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/movie_image"
+                app:layout_constraintTop_toTopOf="@+id/movie_image"
+                app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/movie_adult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Rating"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Title"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/movie_runtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Runtime"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/movie_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Genre"
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:id="@+id/movie_runtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Runtime"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/movie_avg_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Average rating"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/movie_avg_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Average rating"
+                    android:textSize="20sp" />
 
-    </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/movie_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="Details"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_image" />
+        app:layout_constraintTop_toBottomOf="@+id/main_card" />
 
 
     <!--    <LinearLayout-->

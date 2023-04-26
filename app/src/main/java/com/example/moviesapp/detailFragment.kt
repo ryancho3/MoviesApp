@@ -51,10 +51,10 @@ class detailFragment : Fragment() {
 
                 binding.movieGenre.text = genreText
                 binding.movieDetails.text = movie.overview
-                binding.movieAdult.text = when (movie.isAdult) {
-                    true -> "Adult Film"
-                    false -> "Not Adult Film"
-                }
+//                binding.movieAdult.text = when (movie.isAdult) {
+//                    true -> "Adult Film"
+//                    false -> "Not Adult Film"
+//                }
                 binding.movieAvgRating.text = movie.voteAverage.toString()
                 binding.movieRuntime.text = movie.runtime.toString()
 
