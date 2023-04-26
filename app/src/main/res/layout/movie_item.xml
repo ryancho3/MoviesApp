@@ -55,15 +55,9 @@
                 android:id="@+id/movie_rating"
                 />
 
-            <TextView
-                android:id="@+id/movie_genre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/movie_runtime"
+                android:id="@+id/movie_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

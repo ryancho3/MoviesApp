@@ -1,14 +1,19 @@
 package com.example.moviesapp
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
@@ -17,7 +22,7 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
 
         val movieImage: ImageView = itemView.findViewById(R.id.movie_image)
         val movieTitle: TextView = itemView.findViewById(R.id.movie_title)
-        val movieRuntime: TextView = itemView.findViewById(R.id.movie_runtime)
+        val movieReleaseDate: TextView = itemView.findViewById(R.id.movie_release_date)
         val movieRating: RatingBar = itemView.findViewById(R.id.movie_rating)
 
 
@@ -46,16 +51,23 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         return movies.size
     }
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
         val movieImage = holder.movieImage
         val movieTitle = holder.movieTitle
-        val movieRuntime = holder.movieRuntime
+        val movieReleaseDate = holder.movieReleaseDate
         val movieRating = holder.movieRating
 
         movieRating.rating = movie.voteAvg.toFloat() / 2
         movieTitle.text = movie.title
-        movieRuntime.text = "Runtime"
+
+        val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val date = LocalDate.parse(movie.releaseDate , dateFormat)
+
+        movieReleaseDate.text = date.month.toString() + " " +
+                date.dayOfMonth.toString() + ", " + date.year
 
         val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
 
