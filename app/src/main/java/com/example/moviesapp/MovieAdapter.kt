@@ -17,7 +17,7 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
 
         val movieImage: ImageView = itemView.findViewById(R.id.movie_image)
         val movieTitle: TextView = itemView.findViewById(R.id.movie_title)
-        val movieAdult: TextView = itemView.findViewById(R.id.movie_adult)
+        val movieRuntime: TextView = itemView.findViewById(R.id.movie_runtime)
         val movieRating: RatingBar = itemView.findViewById(R.id.movie_rating)
 
 
@@ -50,15 +50,12 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val movie = movies[position]
         val movieImage = holder.movieImage
         val movieTitle = holder.movieTitle
-        val movieAdult = holder.movieAdult
+        val movieRuntime = holder.movieRuntime
         val movieRating = holder.movieRating
 
         movieRating.rating = movie.voteAvg.toFloat() / 2
         movieTitle.text = movie.title
-        movieAdult.text = when (movie.isAdult) {
-            true -> "Adult Film"
-            false -> "Not Adult Film"
-        }
+        movieRuntime.text = "Runtime"
 
         val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
 
