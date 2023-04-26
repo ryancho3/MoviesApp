@@ -53,7 +53,7 @@ class MovieAdapter(private val movies: List<MovieListItem>): RecyclerView.Adapte
         val movieAdult = holder.movieAdult
         val movieRating = holder.movieRating
 
-        movieRating.rating = movie.voteAvg.toFloat()
+        movieRating.rating = movie.voteAvg.toFloat() / 2
         movieTitle.text = movie.title
         movieAdult.text = when (movie.isAdult) {
             true -> "Adult Film"
