@@ -56,7 +56,7 @@ class detailFragment : Fragment() {
 //                    false -> "Not Adult Film"
 //                }
                 binding.movieAvgRating.text = movie.voteAverage.toString()
-                binding.movieRuntime.text = movie.runtime.toString()
+                binding.movieRuntime.text = (movie.runtime / 60).toString() + " hour(s) " + (movie.runtime % 60).toString() + " minutes"
 
                 val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
 
