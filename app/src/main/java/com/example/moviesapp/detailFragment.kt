@@ -50,13 +50,14 @@ class detailFragment : Fragment() {
                 }
 
                 binding.movieGenre.text = genreText
-                binding.movieDetails.text = movie.overview
+                binding.movieOverview.text = movie.overview
 //                binding.movieAdult.text = when (movie.isAdult) {
 //                    true -> "Adult Film"
 //                    false -> "Not Adult Film"
 //                }
-                binding.movieAvgRating.text = movie.voteAverage.toString()
-                binding.movieRuntime.text = (movie.runtime / 60).toString() + " hour(s) " + (movie.runtime % 60).toString() + " minutes"
+                binding.movieRating.rating = movie.voteAverage.toFloat() / 2
+                binding.movieRuntime.text = "Runtime: " + (movie.runtime / 60).toString() +
+                        " h " + (movie.runtime % 60).toString() + " min"
 
                 val movieUri = "https://image.tmdb.org/t/p/original" + movie.posterPath
 

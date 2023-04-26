@@ -14,5 +14,7 @@ data class MovieListItem (
     @Json(name = "title")
     val title: String,
     @Json(name = "vote_average")
-    val voteAvg: Double
+    val voteAvg: Double,
+    @Json(name = "release_date")
+    val releaseDate: String
     )
